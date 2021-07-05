@@ -22,7 +22,7 @@ const Transform = (props) => {
   };
 
   const transition = useTransition(drawerIsOpen, {
-    form: { transform: "translateX(-100%)", opacity: 0 },
+    from: { transform: "translateX(-100%)", opacity: 0 },
     enter: { transform: "translateX(0%)", opacity: 1 },
     leave: { transform: "translateX(-100%)", opacity: 0 },
     config: { duration: 2000 },
