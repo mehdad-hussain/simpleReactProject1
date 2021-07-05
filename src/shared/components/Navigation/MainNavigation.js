@@ -15,7 +15,7 @@ const MainNavigation = (props) => {
   };
 
   const closeDrawerHandler = () => {
-    setDrawerState((v) => !v); // Instead of false using this expression (v) => !v
+    setDrawerState(false); // Instead of false using this expression (v) => !v for toggling
   };
 
   // const transition = useTransition(drawerIsOpen, {
@@ -58,7 +58,7 @@ const MainNavigation = (props) => {
 
       {/* Here we used shortHand ternary expression */}
       <Header>
-        <nav className='navbar navbar-expand-sm navbar-dark bg-blue-300 shadow'>
+        <nav className='navbar navbar-expand-md navbar-dark bg-blue-300 shadow'>
           <NavButton click={openDrawerHandler} />
           <Link to='/' className='navbar-brand font-5x font-w-700 ms-2'>
             Your Places

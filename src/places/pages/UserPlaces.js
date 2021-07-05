@@ -1,4 +1,5 @@
 import PlaceList from "../components/PlaceList";
+import { useParams } from "react-router-dom";
 
 const DUMMY_PLACES = [
   {
@@ -6,7 +7,7 @@ const DUMMY_PLACES = [
     title: "Empire State Building",
     description: "One of the most famous sky scrapers in the world!",
     imageUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Empire_State_Building_%28aerial_view%29.jpg/800px-Empire_State_Building_%28aerial_view%29.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/NYC_Empire_State_Building.jpg/640px-NYC_Empire_State_Building.jpg",
     address: "350 Fifth Avenue Manhattan, New York 10118",
     location: {
       lat: 40.748433,
@@ -19,7 +20,7 @@ const DUMMY_PLACES = [
     title: "Empire State Building",
     description: "One of the most famous sky scrapers in the world!",
     imageUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Empire_State_Building_%28aerial_view%29.jpg/800px-Empire_State_Building_%28aerial_view%29.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/NYC_Empire_State_Building.jpg/640px-NYC_Empire_State_Building.jpg",
     address: "350 Fifth Avenue Manhattan, New York 10118",
     location: {
       lat: 40.748433,
@@ -30,7 +31,9 @@ const DUMMY_PLACES = [
 ];
 
 const UserPlaces = (props) => {
-  return <PlaceList items={DUMMY_PLACES}></PlaceList>;
+  const userID = useParams().userId;
+  const loadedPlaces = DUMMY_PLACES.filter((place) => place.creator === userID);
+  return <PlaceList items={loadedPlaces}></PlaceList>;
 };
 
 export default UserPlaces;

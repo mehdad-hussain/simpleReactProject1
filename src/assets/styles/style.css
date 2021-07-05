@@ -791,6 +791,12 @@
   color: #212529 !important;
 }
 
+/*---------------------------------------------------------------------
+   Max & Min Width & Height
+ ----------------------------------------------------------------------*/
+/*---------------------------------------------------------------------
+  Min-viewport-width
+----------------------------------------------------------------------*/
 .navbar-primary .navbar-brand {
   color: #0d6efd;
 }
@@ -7640,12 +7646,148 @@ textarea.form-control-lg {
   max-width: 100% !important;
 }
 
+.mw-0 {
+  max-width: 0% !important;
+}
+
+.mw-5 {
+  max-width: 5% !important;
+}
+
+.mw-10 {
+  max-width: 10% !important;
+}
+
+.mw-15 {
+  max-width: 15% !important;
+}
+
+.mw-20 {
+  max-width: 20% !important;
+}
+
+.mw-30 {
+  max-width: 30% !important;
+}
+
+.mw-35 {
+  max-width: 35% !important;
+}
+
+.mw-40 {
+  max-width: 40% !important;
+}
+
+.mw-45 {
+  max-width: 45% !important;
+}
+
+.mw-55 {
+  max-width: 55% !important;
+}
+
+.mw-60 {
+  max-width: 60% !important;
+}
+
+.mw-65 {
+  max-width: 65% !important;
+}
+
+.mw-70 {
+  max-width: 70% !important;
+}
+
+.mw-80 {
+  max-width: 80% !important;
+}
+
+.mw-85 {
+  max-width: 85% !important;
+}
+
+.mw-90 {
+  max-width: 90% !important;
+}
+
+.mw-95 {
+  max-width: 95% !important;
+}
+
 .vw-100 {
   width: 100vw !important;
 }
 
 .min-vw-100 {
-  min-width: 100vw !important;
+  min-width: 100vh !important;
+}
+
+.min-vw-0 {
+  min-width: 0vh !important;
+}
+
+.min-vw-5 {
+  min-width: 5vh !important;
+}
+
+.min-vw-10 {
+  min-width: 10vh !important;
+}
+
+.min-vw-15 {
+  min-width: 15vh !important;
+}
+
+.min-vw-20 {
+  min-width: 20vh !important;
+}
+
+.min-vw-30 {
+  min-width: 30vh !important;
+}
+
+.min-vw-35 {
+  min-width: 35vh !important;
+}
+
+.min-vw-40 {
+  min-width: 40vh !important;
+}
+
+.min-vw-45 {
+  min-width: 45vh !important;
+}
+
+.min-vw-55 {
+  min-width: 55vh !important;
+}
+
+.min-vw-60 {
+  min-width: 60vh !important;
+}
+
+.min-vw-65 {
+  min-width: 65vh !important;
+}
+
+.min-vw-70 {
+  min-width: 70vh !important;
+}
+
+.min-vw-80 {
+  min-width: 80vh !important;
+}
+
+.min-vw-85 {
+  min-width: 85vh !important;
+}
+
+.min-vw-90 {
+  min-width: 90vh !important;
+}
+
+.min-vw-95 {
+  min-width: 95vh !important;
 }
 
 .h-25 {
@@ -7740,12 +7882,148 @@ textarea.form-control-lg {
   max-height: 100% !important;
 }
 
+.mh-0 {
+  max-height: 0% !important;
+}
+
+.mh-5 {
+  max-height: 5% !important;
+}
+
+.mh-10 {
+  max-height: 10% !important;
+}
+
+.mh-15 {
+  max-height: 15% !important;
+}
+
+.mh-20 {
+  max-height: 20% !important;
+}
+
+.mh-30 {
+  max-height: 30% !important;
+}
+
+.mh-35 {
+  max-height: 35% !important;
+}
+
+.mh-40 {
+  max-height: 40% !important;
+}
+
+.mh-45 {
+  max-height: 45% !important;
+}
+
+.mh-55 {
+  max-height: 55% !important;
+}
+
+.mh-60 {
+  max-height: 60% !important;
+}
+
+.mh-65 {
+  max-height: 65% !important;
+}
+
+.mh-70 {
+  max-height: 70% !important;
+}
+
+.mh-80 {
+  max-height: 80% !important;
+}
+
+.mh-85 {
+  max-height: 85% !important;
+}
+
+.mh-90 {
+  max-height: 90% !important;
+}
+
+.mh-95 {
+  max-height: 95% !important;
+}
+
 .vh-100 {
   height: 100vh !important;
 }
 
 .min-vh-100 {
-  min-height: 100vh !important;
+  min-height: 100% !important;
+}
+
+.min-vh-0 {
+  min-height: 0vh !important;
+}
+
+.min-vh-5 {
+  min-height: 5vh !important;
+}
+
+.min-vh-10 {
+  min-height: 10vh !important;
+}
+
+.min-vh-15 {
+  min-height: 15vh !important;
+}
+
+.min-vh-20 {
+  min-height: 20vh !important;
+}
+
+.min-vh-30 {
+  min-height: 30vh !important;
+}
+
+.min-vh-35 {
+  min-height: 35vh !important;
+}
+
+.min-vh-40 {
+  min-height: 40vh !important;
+}
+
+.min-vh-45 {
+  min-height: 45vh !important;
+}
+
+.min-vh-55 {
+  min-height: 55vh !important;
+}
+
+.min-vh-60 {
+  min-height: 60vh !important;
+}
+
+.min-vh-65 {
+  min-height: 65vh !important;
+}
+
+.min-vh-70 {
+  min-height: 70vh !important;
+}
+
+.min-vh-80 {
+  min-height: 80vh !important;
+}
+
+.min-vh-85 {
+  min-height: 85vh !important;
+}
+
+.min-vh-90 {
+  min-height: 90vh !important;
+}
+
+.min-vh-95 {
+  min-height: 95vh !important;
 }
 
 .flex-fill {

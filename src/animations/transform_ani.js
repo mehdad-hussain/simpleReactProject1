@@ -25,7 +25,7 @@ const Transform = (props) => {
     from: { transform: "translateX(-100%)", opacity: 0 },
     enter: { transform: "translateX(0%)", opacity: 1 },
     leave: { transform: "translateX(-100%)", opacity: 0 },
-    config: { duration: 2000 },
+    config: { duration: 500 },
     // config: config.molasses,
     // openDrawerHandler: () => setDrawerState(true),
   });

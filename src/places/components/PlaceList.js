@@ -1,8 +1,16 @@
 import Card from "../../shared/components/UIElements/Card";
-import Button from "../../shared/components/UIElements/Button";
+import Button from "../../shared/components/FormElements/Button";
 import PlaceItem from "./PlaceItem";
 
 const PlaceList = (props) => {
+  const myStyle = {
+    listStyle: "none",
+    margin: "1rem auto",
+    padding: 0,
+    width: "90%",
+    maxWidth: "40rem",
+  };
+
   if (props.items.length === 0) {
     return (
       <div className=''>
@@ -14,10 +22,7 @@ const PlaceList = (props) => {
     );
   }
   return (
-    <ul
-      className='m-0 p-0 mx-auto w-90'
-      style={{ listStyle: "none", margin: 6 }}
-    >
+    <ul className='' style={myStyle}>
       {props.items.map((place) => (
         <PlaceItem
           key={place.id}
