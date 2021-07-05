@@ -36,7 +36,7 @@ const Transform = (props) => {
         item ? (
           <animated.aside
             className='bg-white h-100 w-70 shadow'
-            style={{ ...style }}
+            style={{ ...style, ...myStyle }}
             onClick={closeDrawerHandler}
           >
             <nav className='h-100'>

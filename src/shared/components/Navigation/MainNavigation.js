@@ -30,7 +30,7 @@ const MainNavigation = (props) => {
 
   return (
     <React.Fragment>
-      {/* {drawerIsOpen && <BackDrop click={closeDrawerHandler} />} */}
+      {drawerIsOpen && <BackDrop click={closeDrawerHandler} />}
       {/* {transition(
         (style, item) =>
           item && (

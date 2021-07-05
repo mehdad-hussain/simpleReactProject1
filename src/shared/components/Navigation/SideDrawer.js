@@ -12,10 +12,10 @@ const SideDrawer = (props) => {
   };
 
   const transition = useTransition(props.state, {
-    form: { transform: "translateX(-100%)", opacity: 0 },
-    enter: { transform: "translateX(0%)", opacity: 0.5 },
+    from: { transform: "translateX(-100%)", opacity: 0 },
+    enter: { transform: "translateX(0%)", opacity: 1 },
     leave: { transform: "translateX(-100%)", opacity: 0 },
-    config: { duration: 600 },
+    config: { duration: 200 },
     // delay: 200,
     // config: config.molasses,
     // openDrawerHandler: () => setDrawerState(true),
@@ -26,7 +26,7 @@ const SideDrawer = (props) => {
       item && (
         <animated.aside
           className='bg-white h-100 w-70 shadow'
-          style={{ ...style }}
+          style={{ ...style, ...myStyle }}
           onClick={props.click}
         >
           {props.children}
