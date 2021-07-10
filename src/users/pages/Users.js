@@ -4,13 +4,13 @@ const Users = (props) => {
   const USERS = [
     {
       id: "u1",
-      name: "Mehdad Hussain",
+      name: "Shariar Nafees",
       image: "https://source.unsplash.com/random/300x200",
       placeNumber: 3,
     },
     {
       id: "u2",
-      name: "Salahudddin",
+      name: "Ragib Srajani",
       image: "https://source.unsplash.com/random/300x201",
       placeNumber: 4,
     },

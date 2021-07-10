@@ -14,16 +14,20 @@ const SlideDown = (props) => {
   return (
     <div className='container'>
       <div className='button-container'>
-        <button onClick={() => displayContent((a) => !a)} className='button'>
+        <button
+          className='p-4 text-yellow-200 bg-gray-900  hover:border-gray-900'
+          onClick={() => displayContent((a) => !a)}
+        >
           Toggle Content
         </button>
       </div>
+
       {!contentStatus ? (
         <div>No Content</div>
       ) : (
         // Here's where the animated hook comes into play
         <animated.div
-          className='card col-10 shadow bg-blue-500'
+          className='bg-blue-500 shadow card col-10'
           style={contentProps}
         >
           <h1 className='p-2'>
