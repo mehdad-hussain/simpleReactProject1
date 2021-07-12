@@ -1,0 +1,23 @@
+.geolocateStyle {
+  top: 0;
+  left: 0;
+  padding: 10px;
+}
+
+.fullscreenControlStyle {
+  top: 36px;
+  left: 0;
+  padding: 10px;
+}
+
+.navStyle {
+  top: 72px;
+  left: 0;
+  padding: 10px;
+}
+
+.scaleControlStyle {
+  bottom: 36px;
+  left: 0;
+  padding: 10px;
+}

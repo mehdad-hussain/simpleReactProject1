@@ -2,6 +2,7 @@ import React, { useState, useCallback, useEffect } from "react";
 
 import Button from "../../shared/components/FormElements/Button";
 import Modal from "../../shared/components/UIElements/Modal";
+import Map from "../../shared/components/UIElements/Map";
 
 const PlaceItem = (props) => {
   const [mapState, setMapState] = useState(false);
@@ -32,8 +33,14 @@ const PlaceItem = (props) => {
         state={mapState}
         modalSize='lg'
       >
-        <div className=''>
-          <h4>The Map!</h4>
+        <div className='w-full h-96'>
+          <Map
+            center={props.coordinates}
+            zoom={16}
+            popUpImage={props.image}
+            popUpDescription={props.description}
+            popUpTitle={props.title}
+          />
         </div>
       </Modal>
 

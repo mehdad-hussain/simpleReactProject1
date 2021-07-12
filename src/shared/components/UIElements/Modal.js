@@ -28,7 +28,7 @@ const ModalOverlay = (props) => {
             <h5 className='modal-title'>{props.modalTitle}</h5>
             <button
               type='button'
-              class='btn-close'
+              className='btn-close'
               onClick={props.click}
             ></button>
           </div>
