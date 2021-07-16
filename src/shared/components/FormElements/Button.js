@@ -5,11 +5,10 @@ const Button = (props) => {
     return (
       <a
         href={props.href}
-        className={`btn btn-${props.color} m-${props.m} p-${props.p} px-${
-          props.px
-        } py-${props.py} font-${props.font} rounded-${props.rounded} border-${
-          props.border
-        }  ${props.shadow && "shadow-lg"}`}
+        className={`btn ${props.color || ""} ${props.m || ""} 
+        ${props.p || ""} ${props.px || ""} ${props.py || ""} 
+        ${props.font || ""} ${props.rounded || ""} ${props.border || ""}  
+        ${props.shadow || ""}`}
       >
         {props.children}
       </a>
@@ -17,11 +16,10 @@ const Button = (props) => {
   }
   if (props.to) {
     <Link
-      className={`btn btn-${props.color} m-${props.m} p-${props.p} px-${
-        props.px
-      } py-${props.py} font-${props.font} rounded-${props.rounded} border-${
-        props.border
-      } ${props.shadow && "shadow-lg"}`}
+      className={`btn ${props.color || ""} ${props.m || ""} 
+      ${props.p || ""} ${props.px || "" || ""} ${props.py || "" || ""} 
+      ${props.font || "" || ""} ${props.rounded || "" || ""} 
+      ${props.border || "" || ""} ${props.shadow || ""}`}
       to={props.to}
       exact={props.exact}
     >
@@ -31,11 +29,10 @@ const Button = (props) => {
   return (
     <>
       <button
-        className={`btn btn-${props.color} m-${props.m} p-${props.p} px-${
-          props.px
-        } py-${props.py} font-${props.font} rounded-${props.rounded} border-${
-          props.border
-        } ${props.shadow && "shadow-lg"}`}
+        className={`btn ${props.color || ""} ${props.m || ""} 
+        ${props.p || ""} ${props.px || ""} ${props.py || ""} 
+        ${props.font || ""} ${props.rounded || ""} ${props.border || ""} 
+        ${props.shadow || ""}`}
         type={props.type}
         onClick={props.click}
         disabled={props.disabled}

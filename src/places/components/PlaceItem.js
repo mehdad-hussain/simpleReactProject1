@@ -31,7 +31,7 @@ const PlaceItem = (props) => {
         modalTitle={props.address}
         click={closeMap}
         state={mapState}
-        modalSize='lg'
+        modalSize='modal-lg'
       >
         <div className='w-full h-96'>
           <Map
@@ -58,13 +58,20 @@ const PlaceItem = (props) => {
           <p className='card-text'>{props.description}</p>
         </div>
         <div className='p-4 text-center'>
-          <Button click={showMap} color='outline-primary' m='2' p='2'>
+          <Button click={showMap} color='btn-outline-primary' m='m-2' p='p-2'>
             View On Map
           </Button>
-          <Button color='success' m='2' py='2' px='4'>
+          <Button color='btn-success' m='m-2' py='py-2' px='px-4'>
             Edit
           </Button>
-          <Button color='danger' m='2' py='2' px='3' rounded='0' shadow>
+          <Button
+            color='btn-danger'
+            m='m-2'
+            py='py-2'
+            px='px-3'
+            rounded='rounded-0'
+            shadow='shadow-lg'
+          >
             Delete
           </Button>
         </div>

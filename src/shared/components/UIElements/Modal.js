@@ -20,11 +20,11 @@ const ModalOverlay = (props) => {
     >
       <div
         className={` modal-dialog
-          modal-${props.modalSize}
+          ${props.modalSize || ""}
           `}
       >
         <div className='modal-content'>
-          <div className={`modal-header ${props.HeaderClass}`}>
+          <div className={`modal-header ${props.HeaderClass || ""}`}>
             <h5 className='modal-title'>{props.modalTitle}</h5>
             <button
               type='button'
@@ -33,11 +33,13 @@ const ModalOverlay = (props) => {
             ></button>
           </div>
           <div
-            className={`modal-body overflow-y-auto max-h-96 ${props.BodyClass}`}
+            className={`modal-body overflow-y-auto max-h-96 ${
+              props.BodyClass || ""
+            }`}
           >
             {props.children}
           </div>
-          <div className={`modal-footer ${props.footerClass}`}>
+          <div className={`modal-footer ${props.footerClass || ""}`}>
             {props.footer}
             <button
               className='p-2 m-2 btn btn-outline-primary'
