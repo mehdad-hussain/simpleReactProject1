@@ -6,33 +6,32 @@ const Button = (props) => {
       <a
         href={props.href}
         className={`btn ${props.color || ""} ${props.m || ""} 
-        ${props.p || ""} ${props.px || ""} ${props.py || ""} 
-        ${props.font || ""} ${props.rounded || ""} ${props.border || ""}  
-        ${props.shadow || ""}`}
+        ${props.p || ""} ${props.font || ""} ${props.rounded || ""}
+        ${props.border || ""}  ${props.shadow || ""}`}
       >
         {props.children}
       </a>
     );
   }
   if (props.to) {
-    <Link
-      className={`btn ${props.color || ""} ${props.m || ""} 
-      ${props.p || ""} ${props.px || "" || ""} ${props.py || "" || ""} 
-      ${props.font || "" || ""} ${props.rounded || "" || ""} 
-      ${props.border || "" || ""} ${props.shadow || ""}`}
-      to={props.to}
-      exact={props.exact}
-    >
-      {props.children}
-    </Link>;
+    return (
+      <Link
+        className={`btn ${props.color || ""} ${props.m || ""} 
+        ${props.p || ""} ${props.font || ""} ${props.rounded || ""} 
+        ${props.border || ""} ${props.shadow || ""}`}
+        to={props.to}
+        exact={props.exact}
+      >
+        {props.children}
+      </Link>
+    );
   }
   return (
     <>
       <button
         className={`btn ${props.color || ""} ${props.m || ""} 
-        ${props.p || ""} ${props.px || ""} ${props.py || ""} 
-        ${props.font || ""} ${props.rounded || ""} ${props.border || ""} 
-        ${props.shadow || ""}`}
+        ${props.p || ""} ${props.font || ""} ${props.rounded || ""} 
+        ${props.border || ""} ${props.shadow || ""}`}
         type={props.type}
         onClick={props.click}
         disabled={props.disabled}

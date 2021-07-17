@@ -61,14 +61,18 @@ const PlaceItem = (props) => {
           <Button click={showMap} color='btn-outline-primary' m='m-2' p='p-2'>
             View On Map
           </Button>
-          <Button color='btn-success' m='m-2' py='py-2' px='px-4'>
+          <Button
+            to={`/places/${props.id}`}
+            color='btn-success'
+            m='m-2'
+            p='py-2 px-4'
+          >
             Edit
           </Button>
           <Button
             color='btn-danger'
             m='m-2'
-            py='py-2'
-            px='px-3'
+            p='py-2 px-3'
             rounded='rounded-0'
             shadow='shadow-lg'
           >

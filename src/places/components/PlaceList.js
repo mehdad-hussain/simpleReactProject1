@@ -13,12 +13,12 @@ const PlaceList = (props) => {
 
   if (props.items.length === 0) {
     return (
-      <div className=''>
-        <Card>
-          <h2>No Places found. Maybe create one?</h2>
-          <Button>Share Place</Button>
-        </Card>
-      </div>
+      <Card className='w-3/4 p-2 m-12 mx-auto text-center shadow-lg h-3/4 lg:w-1/2'>
+        <h2>No Places found. Maybe create one?</h2>
+        <Button to='/places/new' p='w-2/4' m='m-3 mx-auto' color='btn-primary'>
+          Share Place
+        </Button>
+      </Card>
     );
   }
   return (

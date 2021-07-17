@@ -9,6 +9,7 @@ import Users from "./users/pages/Users";
 import NewPlace from "./places/pages/NewPlace";
 import MainNavigation from "../src/shared/components/Navigation/MainNavigation";
 import UserPlaces from "./places/pages/UserPlaces";
+import UpdatePlace from "./places/pages/UpdatePlace";
 
 import FadeIn from "./animations/FadeIn_ani";
 import InnerText from "./animations/innerText_ani";
@@ -20,24 +21,29 @@ const App = (props) => {
   return (
     <Router>
       <MainNavigation />
-      <Switch>
-        <Route path='/' exact>
-          <Users />
-          {/* <FadeIn></FadeIn> */}
-          {/* <InnerText></InnerText> */}
-          {/* <Toggle></Toggle> */}
+      <main>
+        <Switch>
+          <Route path='/' exact>
+            <Users />
+            {/* <FadeIn></FadeIn> */}
+            {/* <InnerText></InnerText> */}
+            {/* <Toggle></Toggle> */}
 
-          <Transform></Transform>
-          <SlideDown></SlideDown>
-        </Route>
-        <Route path='/:userId/places' exact>
-          <UserPlaces />
-        </Route>
-        <Route path='/places/new' exact>
-          <NewPlace />
-        </Route>
-        <Redirect to='/'></Redirect>
-      </Switch>
+            <Transform></Transform>
+            <SlideDown></SlideDown>
+          </Route>
+          <Route path='/:userId/places' exact>
+            <UserPlaces />
+          </Route>
+          <Route path='/places/new' exact>
+            <NewPlace />
+          </Route>
+          <Route path='/places/:placeId'>
+            <UpdatePlace />
+          </Route>
+          <Redirect to='/'></Redirect>
+        </Switch>
+      </main>
     </Router>
   );
 };

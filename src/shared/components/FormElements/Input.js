@@ -24,9 +24,9 @@ const inputReducer = (state, action) => {
 const Input = (props) => {
   //  <!-- reducer for multiple states -->
   const [inputState, dispatch] = useReducer(inputReducer, {
-    value: "",
+    value: props.initialValue || "",
     isTouched: false,
-    isValid: false,
+    isValid: props.initialValid || false,
   });
 
   const changeHandler = (event) => {
@@ -72,6 +72,12 @@ const Input = (props) => {
       />
     ) : (
       <textarea
+        className={`w-full p-1 border-2 rounded focus:outline-none focus:ring-1 
+        ${
+          !inputState.isValid && inputState.isTouched
+            ? "border-red-500 focus:border-red-500 focus:ring-red-500"
+            : "border-blue-500 focus:border-blue-500 focus:ring-blue-500"
+        }`}
         id={props.id}
         rows={props.rows || 3}
         onChange={changeHandler}
@@ -83,8 +89,8 @@ const Input = (props) => {
   return (
     <div>
       <div className=''>
-        <div className='card-body'>
-          <label className='block p-2 font-medium' htmlFor='props.id'>
+        <div className='p-1 m-3'>
+          <label className='block p-2 font-medium font-2x' htmlFor='props.id'>
             {props.label}
           </label>
           {element}
