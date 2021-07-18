@@ -3,12 +3,7 @@ import { Link } from "react-router-dom";
 const Button = (props) => {
   if (props.href) {
     return (
-      <a
-        href={props.href}
-        className={`btn ${props.color || ""} ${props.m || ""} 
-        ${props.p || ""} ${props.font || ""} ${props.rounded || ""}
-        ${props.border || ""}  ${props.shadow || ""}`}
-      >
+      <a href={props.href} className={`btn ${props.classes || ""}`}>
         {props.children}
       </a>
     );
@@ -16,9 +11,7 @@ const Button = (props) => {
   if (props.to) {
     return (
       <Link
-        className={`btn ${props.color || ""} ${props.m || ""} 
-        ${props.p || ""} ${props.font || ""} ${props.rounded || ""} 
-        ${props.border || ""} ${props.shadow || ""}`}
+        className={`btn ${props.classes || ""}`}
         to={props.to}
         exact={props.exact}
       >
@@ -29,9 +22,7 @@ const Button = (props) => {
   return (
     <>
       <button
-        className={`btn ${props.color || ""} ${props.m || ""} 
-        ${props.p || ""} ${props.font || ""} ${props.rounded || ""} 
-        ${props.border || ""} ${props.shadow || ""}`}
+        className={`btn ${props.classes || ""}`}
         type={props.type}
         onClick={props.click}
         disabled={props.disabled}

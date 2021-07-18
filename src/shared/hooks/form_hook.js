@@ -5,6 +5,9 @@ const formReducer = (state, action) => {
     case "INPUT_CHANGE":
       let formISValid = true;
       for (const inputId in state.inputs) {
+        if (!state.inputs[inputId]) {
+          continue; // this block used here for login mage switch mode
+        }
         if (inputId === action.inputId) {
           formISValid = formISValid && action.isValid;
         } else {

@@ -86,7 +86,7 @@ const UpdatePlace = (props) => {
 
   if (!identifiedPlace) {
     return (
-      <div className='w-1/3 p-6 m-12 mx-auto text-center rounded shadow-lg'>
+      <div className='w-1/3 p-6 m-12 mx-auto text-center bg-white rounded shadow-lg'>
         <h2>Could not find place!</h2>
       </div>
     );
@@ -102,7 +102,7 @@ const UpdatePlace = (props) => {
 
   return (
     <form
-      className='w-3/4 m-12 mx-auto shadow-lg h-3/4 lg:w-1/2'
+      className='w-3/4 m-12 mx-auto bg-white rounded shadow-lg h-3/4 lg:w-1/2'
       onSubmit={submitHandler}
     >
       <Input
@@ -128,13 +128,17 @@ const UpdatePlace = (props) => {
         initialValid={formState.inputs.description.isValid}
       />
       <Button
-        p='px-3 py-2'
-        m='m-3'
-        color='btn-primary'
+        classes='m-2 px-3 py-2 btn-primary'
         type='submit'
         disabled={!formState.isValid}
       >
         Update Place
+      </Button>
+      <Button
+        classes='m-2 px-3 py-2 bg-blue-500'
+        to={`/${identifiedPlace.creator}/places`}
+      >
+        Cancel
       </Button>
     </form>
   );

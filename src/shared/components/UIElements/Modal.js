@@ -41,12 +41,6 @@ const ModalOverlay = (props) => {
           </div>
           <div className={`modal-footer ${props.footerClass || ""}`}>
             {props.footer}
-            <button
-              className='p-2 m-2 btn btn-outline-primary'
-              onClick={props.click}
-            >
-              Close
-            </button>
           </div>
         </div>
       </div>

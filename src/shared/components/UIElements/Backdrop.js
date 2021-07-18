@@ -9,7 +9,7 @@ const BackDrop = (props) => {
 
   const content = (
     <div
-      className='bg-gray-900 w-100 h-100'
+      className='bg-gray-900 opacity-80 w-100 h-100'
       onClick={props.click}
       style={myStyle}
     ></div>

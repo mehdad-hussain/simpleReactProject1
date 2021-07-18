@@ -1,14 +1,24 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect, useContext } from "react";
 
 import Button from "../../shared/components/FormElements/Button";
 import Modal from "../../shared/components/UIElements/Modal";
 import Map from "../../shared/components/UIElements/Map";
+import { loginContext } from "../../shared/context/login_context";
 
 const PlaceItem = (props) => {
+  const login = useContext(loginContext);
+
   const [mapState, setMapState] = useState(false);
+  const [confirmModalState, setConfirmModalState] = useState(false);
 
   const showMap = () => setMapState(true);
   const closeMap = () => setMapState(false);
+
+  const showWarningHandler = () => setConfirmModalState(true);
+  const cancelDeleteHandler = () => setConfirmModalState(false);
+  const confirmDeleteHandler = () => {
+    console.log("DELETING...");
+  };
 
   const keyPress = useCallback(
     (e) => {
@@ -32,6 +42,11 @@ const PlaceItem = (props) => {
         click={closeMap}
         state={mapState}
         modalSize='modal-lg'
+        footer={
+          <Button click={closeMap} classes='m-2 p-2 btn-outline-primary'>
+            Close
+          </Button>
+        }
       >
         <div className='w-full h-96'>
           <Map
@@ -44,8 +59,35 @@ const PlaceItem = (props) => {
         </div>
       </Modal>
 
-      <li className='mt-4 shadow'>
-        <div className='card'>
+      <Modal
+        modalTitle='Are you sure ?'
+        click={cancelDeleteHandler}
+        state={confirmModalState}
+        footer={
+          <>
+            <Button
+              click={cancelDeleteHandler}
+              classes='m-2 p-2 btn-outline-primary'
+            >
+              Cancel
+            </Button>
+            <Button
+              click={confirmDeleteHandler}
+              classes='m-2 p-2 btn-danger rounded-0'
+            >
+              Delete
+            </Button>
+          </>
+        }
+      >
+        <p>
+          Do you want to proceed and delete this place? Please note that it
+          can't be undone thereafter.
+        </p>
+      </Modal>
+
+      <li className='mt-4 bg-white rounded shadow'>
+        <div className=' card'>
           <img
             src={props.image}
             alt={props.title}
@@ -58,26 +100,25 @@ const PlaceItem = (props) => {
           <p className='card-text'>{props.description}</p>
         </div>
         <div className='p-4 text-center'>
-          <Button click={showMap} color='btn-outline-primary' m='m-2' p='p-2'>
+          <Button click={showMap} classes='m-2 p-2 btn-outline-primary'>
             View On Map
           </Button>
-          <Button
-            to={`/places/${props.id}`}
-            color='btn-success'
-            m='m-2'
-            p='py-2 px-4'
-          >
-            Edit
-          </Button>
-          <Button
-            color='btn-danger'
-            m='m-2'
-            p='py-2 px-3'
-            rounded='rounded-0'
-            shadow='shadow-lg'
-          >
-            Delete
-          </Button>
+          {login.isLoggedIn && (
+            <Button
+              to={`/places/${props.id}`}
+              classes='m-2 px-4 py-2 btn-success'
+            >
+              Edit
+            </Button>
+          )}
+          {login.isLoggedIn && (
+            <Button
+              click={showWarningHandler}
+              classes='m-2 px-3 py-2 btn-danger rounded-0 shadow-lg'
+            >
+              Delete
+            </Button>
+          )}
         </div>
       </li>
     </React.Fragment>
