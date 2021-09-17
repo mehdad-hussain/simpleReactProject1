@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useTransition, animated, config } from "react-spring";
-import ReactDOM from "react-dom";
+import { useTransition, animated } from "react-spring";
+// import ReactDOM from "react-dom";
 
 const Transform = (props) => {
   const myStyle = {

@@ -43,7 +43,10 @@ const NavLinks = (props) => {
       )}
       {login.isLoggedIn && (
         <li>
-          <button className='btn btn-outline-secondary' onClick={login.logout}>
+          <button
+            className='font-w-600 border-1 py-2 px-3 mr-5 border-[#d6d6d6] hover:bg-[#d6d6d6]'
+            onClick={login.logout}
+          >
             Logout
           </button>
         </li>

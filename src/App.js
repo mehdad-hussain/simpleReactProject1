@@ -14,9 +14,9 @@ import UpdatePlace from "./places/pages/UpdatePlace";
 import Login from "./users/pages/Log_in";
 import { loginContext } from "./shared/context/login_context";
 
-import FadeIn from "./animations/FadeIn_ani";
-import InnerText from "./animations/innerText_ani";
-import Toggle from "./animations/toggleComponents_ani";
+// import FadeIn from "./animations/FadeIn_ani";
+// import InnerText from "./animations/innerText_ani";
+// import Toggle from "./animations/toggleComponents_ani";
 import Transform from "./animations/transform_ani";
 import SlideDown from "./animations/SlideDown_ani";
 
