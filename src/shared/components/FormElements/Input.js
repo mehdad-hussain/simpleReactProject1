@@ -87,18 +87,14 @@ const Input = (props) => {
     );
 
   return (
-    <div>
-      <div className=''>
-        <div className='p-1 m-3'>
-          <label className='block p-2 font-medium font-2x' htmlFor='props.id'>
-            {props.label}
-          </label>
-          {element}
-          {!inputState.isValid && inputState.isTouched && (
-            <p className='m-2 text-red-500'>{props.errorText}</p>
-          )}
-        </div>
-      </div>
+    <div className='p-1 m-1'>
+      <label className='block p-1 font-medium' htmlFor='props.id'>
+        {props.label}
+      </label>
+      {element}
+      {!inputState.isValid && inputState.isTouched && (
+        <p className='m-1 text-red-500'>{props.errorText}</p>
+      )}
     </div>
   );
 };

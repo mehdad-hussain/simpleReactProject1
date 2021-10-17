@@ -6,7 +6,7 @@ const formReducer = (state, action) => {
       let formISValid = true;
       for (const inputId in state.inputs) {
         if (!state.inputs[inputId]) {
-          continue; // this block used here for login mage switch mode
+          continue; // this block used for auth page switch mode to avoid validation of undefined fields.
         }
         if (inputId === action.inputId) {
           formISValid = formISValid && action.isValid;

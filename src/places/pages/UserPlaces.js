@@ -1,39 +1,60 @@
-import PlaceList from "../components/PlaceList";
 import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-const DUMMY_PLACES = [
-  {
-    id: "p1",
-    title: "Empire State Building",
-    description: "One of the most famous sky scrapers in the world!",
-    imageUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/NYC_Empire_State_Building.jpg/640px-NYC_Empire_State_Building.jpg",
-    address: "350 Fifth Avenue Manhattan, New York 10118",
-    location: {
-      lat: 40.748433,
-      lng: -73.985656,
-    },
-    creator: "u1",
-  },
-  {
-    id: "p2",
-    title: "Emp. State Building",
-    description: "One of the most famous sky scrapers in the world!",
-    imageUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/NYC_Empire_State_Building.jpg/640px-NYC_Empire_State_Building.jpg",
-    address: "350 Fifth Avenue Manhattan, New York 10118",
-    location: {
-      lat: 40.748433,
-      lng: -73.985656,
-    },
-    creator: "u2",
-  },
-];
+import PlaceList from "../components/PlaceList";
+import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
+import Modal from "../../shared/components/UIElements/Modal";
+import Button from "../../shared/components/FormElements/Button";
+import { useHttpClient } from "../../shared/hooks/http_hook";
 
 const UserPlaces = (props) => {
+  const [placeList, setPlaceList] = useState();
+  const { loadingMode, error, sendRequest, clearError } = useHttpClient();
+
   const userID = useParams().userId;
-  const loadedPlaces = DUMMY_PLACES.filter((place) => place.creator === userID);
-  return <PlaceList items={loadedPlaces}></PlaceList>;
+
+  useEffect(() => {
+    const fetchPlaces = async () => {
+      const response = await sendRequest(`places/user/${userID}`);
+      setPlaceList(response.data.places);
+    };
+    fetchPlaces();
+  }, [sendRequest, userID]);
+  // const loadedPlaces = DUMMY_PLACES.filter((place) => place.creator === userID);
+
+  const deletePlaceHandler = (deletedPlaceId) => {
+    setPlaceList((prevPlaces) =>
+      prevPlaces.filter((place) => place.id !== deletedPlaceId)
+    );
+  };
+
+  return (
+    <>
+      <Modal
+        modalSize='modal-md'
+        headerClass='bg-red-500'
+        modalTitle='An Error Occurred'
+        click={clearError}
+        state={error}
+        footer={
+          <Button click={clearError} classes='m-2 p-2 btn-outline-primary'>
+            Okay
+          </Button>
+        }
+      >
+        <p>{error}</p>
+      </Modal>
+
+      {loadingMode && <LoadingSpinner />}
+
+      {!loadingMode && placeList && (
+        <PlaceList
+          items={placeList}
+          deletedPlace={deletePlaceHandler}
+        ></PlaceList>
+      )}
+    </>
+  );
 };
 
 export default UserPlaces;

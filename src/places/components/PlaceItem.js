@@ -2,11 +2,14 @@ import React, { useState, useCallback, useEffect, useContext } from "react";
 
 import Button from "../../shared/components/FormElements/Button";
 import Modal from "../../shared/components/UIElements/Modal";
+import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import Map from "../../shared/components/UIElements/Map";
-import { loginContext } from "../../shared/context/login_context";
+import { AuthContext } from "../../shared/context/auth_context";
+import { useHttpClient } from "../../shared/hooks/http_hook";
 
 const PlaceItem = (props) => {
-  const login = useContext(loginContext);
+  const auth = useContext(AuthContext);
+  const { loadingMode, error, sendRequest, clearError } = useHttpClient();
 
   const [mapState, setMapState] = useState(false);
   const [confirmModalState, setConfirmModalState] = useState(false);
@@ -16,8 +19,12 @@ const PlaceItem = (props) => {
 
   const showWarningHandler = () => setConfirmModalState(true);
   const cancelDeleteHandler = () => setConfirmModalState(false);
-  const confirmDeleteHandler = () => {
-    console.log("DELETING...");
+
+  //  <!-- function for deleting place & send req to server -->
+  const confirmDeleteHandler = async () => {
+    setConfirmModalState(false);
+    await sendRequest(`places/${props.id}`, "delete");
+    props.deletePlace(props.id);
   };
 
   const keyPress = useCallback(
@@ -37,6 +44,22 @@ const PlaceItem = (props) => {
 
   return (
     <React.Fragment>
+      {/* Modal for error message */}
+      <Modal
+        modalSize='modal-md'
+        headerClass='bg-red-500'
+        modalTitle='An Error Occurred'
+        click={clearError}
+        state={error}
+        footer={
+          <Button click={clearError} classes='m-2 p-2 btn-outline-primary'>
+            Okay
+          </Button>
+        }
+      >
+        <p>{error}</p>
+      </Modal>
+      {/* Modal for showing Map */}
       <Modal
         modalTitle={props.address}
         click={closeMap}
@@ -59,6 +82,7 @@ const PlaceItem = (props) => {
         </div>
       </Modal>
 
+      {/* Modal for deleting place */}
       <Modal
         modalTitle='Are you sure ?'
         click={cancelDeleteHandler}
@@ -86,12 +110,14 @@ const PlaceItem = (props) => {
         </p>
       </Modal>
 
+      {/* Place showing Card */}
       <li className='mt-4 bg-white rounded shadow'>
-        <div className=' card'>
+        <div className='card'>
+          {loadingMode && <LoadingSpinner />}
           <img
-            src={props.image}
+            src={`http://localhost:5000/${props.image}`}
             alt={props.title}
-            className='w-100 h-100 img-fluid'
+            className='w-full h-full img-fluid'
           />
         </div>
         <div className='p-4 text-center card-body'>
@@ -99,22 +125,22 @@ const PlaceItem = (props) => {
           <h5>{props.address}</h5>
           <p className='card-text'>{props.description}</p>
         </div>
-        <div className='p-4 text-center'>
-          <Button click={showMap} classes='m-2 p-2 btn-outline-primary'>
+        <div className='p-2 text-center'>
+          <Button click={showMap} classes='m-1 p-2 btn-outline-primary'>
             View On Map
           </Button>
-          {login.isLoggedIn && (
+          {auth.userId === props.creatorId && (
             <Button
               to={`/places/${props.id}`}
-              classes='m-2 px-4 py-2 btn-success'
+              classes='m-1 px-4 py-2 btn-success'
             >
               Edit
             </Button>
           )}
-          {login.isLoggedIn && (
+          {auth.userId === props.creatorId && (
             <Button
               click={showWarningHandler}
-              classes='m-2 px-3 py-2 btn-danger rounded-0 shadow-lg'
+              classes='m-1 px-3 py-2 btn-danger rounded-0 shadow-lg'
             >
               Delete
             </Button>

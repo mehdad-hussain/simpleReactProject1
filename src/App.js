@@ -11,8 +11,8 @@ import NewPlace from "./places/pages/NewPlace";
 import MainNavigation from "../src/shared/components/Navigation/MainNavigation";
 import UserPlaces from "./places/pages/UserPlaces";
 import UpdatePlace from "./places/pages/UpdatePlace";
-import Login from "./users/pages/Log_in";
-import { loginContext } from "./shared/context/login_context";
+import Auth from "./users/pages/Auth";
+import { AuthContext } from "./shared/context/auth_context";
 
 // import FadeIn from "./animations/FadeIn_ani";
 // import InnerText from "./animations/innerText_ani";
@@ -22,14 +22,18 @@ import SlideDown from "./animations/SlideDown_ani";
 
 const App = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userId, setUserId] = useState(null);
 
-  const login = useCallback(() => {
+  const login = useCallback((uid) => {
     setIsLoggedIn(true);
+    setUserId(uid);
   }, []);
   const logout = useCallback(() => {
     setIsLoggedIn(false);
+    setUserId(null);
   }, []);
 
+  //  <!-- Setting Routes -->
   let routes;
   if (isLoggedIn) {
     routes = (
@@ -71,7 +75,7 @@ const App = (props) => {
           <UserPlaces />
         </Route>
         <Route path='/auth'>
-          <Login />
+          <Auth />
         </Route>
         <Redirect to='/auth'></Redirect>
       </Switch>
@@ -79,14 +83,19 @@ const App = (props) => {
   }
 
   return (
-    <loginContext.Provider
-      value={{ isLoggedIn: isLoggedIn, login: login, logout: logout }}
+    <AuthContext.Provider
+      value={{
+        isLoggedIn: isLoggedIn,
+        userId: userId,
+        login: login,
+        logout: logout,
+      }}
     >
       <Router>
         <MainNavigation />
         <main>{routes}</main>
       </Router>
-    </loginContext.Provider>
+    </AuthContext.Provider>
   );
 };
 

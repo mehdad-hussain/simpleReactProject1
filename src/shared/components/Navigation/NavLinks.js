@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 
-import { loginContext } from "../../context/login_context";
+import { AuthContext } from "../../context/auth_context";
 
 import "./NavLinks.css";
 const NavLinks = (props) => {
-  const login = useContext(loginContext);
+  const auth = useContext(AuthContext);
 
   return (
     <ul className='p-1 mt-1 navbar-nav ms-auto font-1x font-w-600'>
@@ -14,17 +14,17 @@ const NavLinks = (props) => {
           All Users
         </NavLink>
       </li>
-      {login.isLoggedIn && (
+      {auth.isLoggedIn && (
         <li className='nav-item me-5 nav-custom '>
           <NavLink
-            to='/u1/places'
+            to={`/${auth.userId}/places`}
             className={`nav-link ps-1 text-${props.color}`}
           >
             My Places
           </NavLink>
         </li>
       )}
-      {login.isLoggedIn && (
+      {auth.isLoggedIn && (
         <li className='nav-item me-5 nav-custom'>
           <NavLink
             to='/places/new'
@@ -34,18 +34,18 @@ const NavLinks = (props) => {
           </NavLink>
         </li>
       )}
-      {!login.isLoggedIn && (
+      {!auth.isLoggedIn && (
         <li className='nav-item me-5 nav-custom'>
           <NavLink to='/auth' className={`nav-link ps-1 text-${props.color}`}>
-            Sign Up
+            Sign In
           </NavLink>
         </li>
       )}
-      {login.isLoggedIn && (
+      {auth.isLoggedIn && (
         <li>
           <button
             className='font-w-600 border-1 py-2 px-3 mr-5 border-[#d6d6d6] hover:bg-[#d6d6d6]'
-            onClick={login.logout}
+            onClick={auth.logout}
           >
             Logout
           </button>

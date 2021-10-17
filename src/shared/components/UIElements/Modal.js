@@ -24,7 +24,7 @@ const ModalOverlay = (props) => {
           `}
       >
         <div className='modal-content'>
-          <div className={`modal-header ${props.HeaderClass || ""}`}>
+          <div className={`modal-header ${props.headerClass || ""}`}>
             <h5 className='modal-title'>{props.modalTitle}</h5>
             <button
               type='button'
